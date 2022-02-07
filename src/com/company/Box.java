@@ -1,11 +1,10 @@
 package com.company;
 
 public class Box {
-    private int width;
-    private int height;
-    private int length;
-    private String colour;
-    private String material;
+    protected int width;
+    protected int height;
+    protected int length;
+    protected Material material;
 
     public Box(int width, int height, int length) {
         this.width = width;
@@ -13,14 +12,14 @@ public class Box {
         this.length = length;
     }
 
-    public Box(int width, int height, int length, String colour, String material) {
+    public Box(int width, int height, int length, Material material) {
         this(width, height, length);
-        this.colour = colour;
         this.material = material;
     }
 
-    void printVolume() {
-        System.out.println("Volume = " + width * height * length + ".");
+    public int getVolume() {
+        int volume = width * height * length;
+        return volume;
     }
 
     public int getWidth() {
@@ -59,19 +58,11 @@ public class Box {
         }
     }
 
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-    public String getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
-    public void setMaterial(String material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 }
