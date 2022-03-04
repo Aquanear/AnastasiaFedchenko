@@ -1,18 +1,26 @@
-package com.company;
+package com.company.models;
+import com.example.exceptions.ConstructorException;
 
 public class Box {
+
     protected int width;
     protected int height;
     protected int length;
     protected Material material;
 
-    public Box(int width, int height, int length) {
+    public Box(int width, int height, int length) throws ConstructorException {
+
+        if (width <= 0 || height <= 0 || length <= 0) {
+            throw new ConstructorException("Error! Constructor exception.");
+        }
+
         this.width = width;
         this.height = height;
-        this.length = length;
+        this.length=length;
+
     }
 
-    public Box(int width, int height, int length, Material material) {
+    public Box(int width, int height, int length, Material material) throws ConstructorException {
         this(width, height, length);
         this.material = material;
     }
@@ -64,5 +72,15 @@ public class Box {
 
     public void setMaterial(Material material) {
         this.material = material;
+    }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "width=" + width +
+                ", height=" + height +
+                ", length=" + length +
+                ", material=" + material +
+                "}";
     }
 }
